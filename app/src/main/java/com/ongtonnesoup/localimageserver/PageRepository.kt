@@ -1,9 +1,21 @@
 package com.ongtonnesoup.localimageserver
 
+import android.content.Context
 import io.reactivex.Single
 
-class PageRepository {
+private val FILENAME = "page.html"
 
-    fun getData(): Single<Page> = Single.fromCallable { Page("<html><h1>Hello world</h1></html>") }
+class PageRepository(private val context: Context) {
+
+    fun getData(): Single<Page> = Single.fromCallable {
+        val html = read(FILENAME)
+        Page(html)
+    }
+
+    private fun read(file: String): String {
+        return context.assets.open(file).bufferedReader().use {
+            it.readText()
+        }
+    }
 
 }

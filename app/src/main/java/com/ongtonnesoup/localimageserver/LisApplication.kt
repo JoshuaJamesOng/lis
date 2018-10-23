@@ -9,7 +9,7 @@ import com.github.ajalt.timberkt.Timber
 
 class LisApplication : Application(), LifecycleObserver {
 
-    private val server by lazy { LocalImageServer(LocalImageServer.Configuration()) }
+    private val server by lazy { LocalImageServer(LocalImageServer.Configuration(), ImageRepository(this)) }
 
     override fun onCreate() {
         super.onCreate()

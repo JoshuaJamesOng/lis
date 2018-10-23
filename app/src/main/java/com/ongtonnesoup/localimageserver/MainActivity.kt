@@ -8,7 +8,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModelFactory by lazy { ViewModelFactory(PageRepository(this.applicationContext), UiPageMapper()) }
+    private val viewModelFactory by lazy {
+        ViewModelFactory(
+            PageRepository(this.applicationContext, LocalImageServer.Configuration()),
+            UiPageMapper()
+        )
+    }
     private val viewModel by lazy { ViewModelProviders.of(this, viewModelFactory).get(PageViewModel::class.java) }
 
     private val _disposables = CompositeDisposable()

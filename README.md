@@ -1,6 +1,8 @@
 # Local Image Server/Spike
 Spike into serving images using a local web server
 
+![](readme.gif)
+
 # Implementation
 * App is given raw HTML
 * DOM is traversed for `<img>` tags
